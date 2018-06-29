@@ -9,8 +9,8 @@ function getAll (req,res,next) {
 function getOne (req,res,next) {
   const id = req.params.id
   const data = model.getOne(id)
-  if (data[0].status) {
-    return next({error: data})
+  if (data[0]) {
+    next({error: data})
   }
   res.status(200).json({data})
 }
@@ -18,8 +18,8 @@ function getOne (req,res,next) {
 function createOne (req,res,next) {
   const body = req.body
   const data = model.createOne(body)
-  if (data[0].status) {
-    return next({error: data})
+  if (data[0]) {
+    next({error: data})
   }
   res.status(201).json({data})
 }
@@ -28,8 +28,8 @@ function updateOne (req,res,next) {
   const body = req.body
   const id = req.params.id
   const data = model.updateOne(id, body)
-  if (data[0].status) {
-    return next({error: data})
+  if (data[0]) {
+    next({error: data})
   }
   res.status(200).json({data})
 }
@@ -38,8 +38,8 @@ function deleteOne (req,res,next) {
   let response
   const id = req.params.id
   const data = model.deleteOne(id)
-  if (data[0].status) {
-    return next({error: data})
+  if (data[0]) {
+    next({error: data})
   }
   res.status(200).json({data})
 }

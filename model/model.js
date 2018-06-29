@@ -14,7 +14,7 @@ function getOne (id) {
 
 function createOne (body) {
   let response = bodyVal.bodyValAccount(body)
-  if (response[0].status) {
+  if (response[0]) {
     return response
   } else {
     data.push(response)
@@ -27,7 +27,7 @@ function updateOne (id, body) {
   const account = data.find(account => account.id === id)
   if (account) {
     response = bodyVal.bodyValAccount(body)
-    if(response[0].status) {
+    if(response[0]) {
       return response
     } else {
       account.name = response.name

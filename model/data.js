@@ -3,62 +3,62 @@ const faker = require('faker')
 let randomName = faker.name.findName()
 let randomAcc = faker.finance.accountName()
 let randomTrans = faker.finance.transactionType()
-let randomAmount = faker.fiance.amount()
+let randomAmount = faker.finance.amount()
 
 module.exports =
 [{
   id: ID.generate(),
-  name: randomName,
+  name: faker.name.findName(),
   bankName: "Chase",
-  description: randomAcc,
+  description: faker.finance.accountName(),
   transactions: [{
       id: ID.generate(),
-      title: randomTrans,
-      amount: randomAmount,
+      title: faker.finance.transactionType(),
+      amount: faker.finance.amount(),
       pending: true
     },
     {
       id: ID.generate(),
-      title: randomTrans,
-      amount: randomAmount,
+      title: faker.finance.transactionType(),
+      amount: faker.finance.amount(),
       pending: false
     }
   ]
 },
 {
   id: ID.generate(),
-  name: randomName,
+  name: faker.name.findName(),
   bankName: 'Wells Fargo',
-  description: randomAcc,
+  description: faker.finance.accountName(),
   transactions: [{
       id: ID.generate(),
-      title: randomTrans,
-      amount: randomAmount,
+      title: faker.finance.transactionType(),
+      amount: faker.finance.amount(),
       pending: true
     }
   ]
 },
 {
   id: ID.generate(),
-  name: randomName,
+  name: faker.name.findName(),
   bankName: "Bank of America",
-  description: randomAcc,
+  description: faker.finance.accountName(),
   transactions: [{
       id: ID.generate(),
-      title: randomTrans,
-      amount: randomAmount,
+      title: faker.finance.transactionType(),
+      amount: faker.finance.amount(),
       pending: false
     },
     {
       id: ID.generate(),
-      title: randomTrans,
-      amount: randomAmount,
+      title: faker.finance.transactionType(),
+      amount: faker.finance.amount(),
       pending: true
     },
     {
       id: ID.generate(),
-      title: randomTrans,
-      amount: randomAmount,
+      title: faker.finance.transactionType(),
+      amount: faker.finance.amount(),
       pending: false
     }
   ]

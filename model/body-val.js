@@ -1,3 +1,5 @@
+const ID = require('short-id')
+
 function bodyValAccount (body) {
   let errors = []
   const name = body.name
