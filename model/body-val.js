@@ -29,8 +29,31 @@ function bodyValAccount (body) {
   return errors
 }
 
-function bodyValTransaction () {
+function bodyValTransaction (body) {
+  let errors = []
+  const title = body.title
+  const amount = body.amount
+  const pending = body.pending
 
+  if (title && typeof(title) === 'string' && title.length) {
+    if (amount && typeof(amount) === 'string' && parseFloat(amount) > 0) {
+      if (pending && typeof(JSON.parse(pending)) === 'boolean') {
+        return {
+          id: ID.generate(),
+          title: title,
+          amount: amount,
+          pending: JSON.parse(pending)
+        }
+      } else {
+        errors.push({status: 400, message: "You need a pending field with true/false."})
+      }
+    } else {
+      errors.push({status: 400, message: "You need an numerical amount for your transaction."})
+    }
+  } else {
+    errors.push({status: 400, message: "You need a title (type) of transaction (ex. withdrawal)"})
+  }
+  return errors
 }
 
 module.exports = {

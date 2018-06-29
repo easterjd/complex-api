@@ -35,10 +35,59 @@ function updateOne (req,res,next) {
 }
 
 function deleteOne (req,res,next) {
-  let response
   const id = req.params.id
   const data = model.deleteOne(id)
   if (data[0]) {
+    next({error: data})
+  }
+  res.status(200).json({data})
+}
+
+function getAllTrans (req,res,next) {
+  const id = req.params.id
+  const data = model.getAllTrans(id)
+  if (data.status) {
+    next({error: data})
+  }
+  res.status(200).json({data})
+}
+
+function getOneTrans (req,res,next) {
+  const id = req.params.id
+  const idT = req.params.idT
+  const data = model.getOneTrans(id, idT)
+  if (data.status) {
+    next({error: data})
+  }
+  res.status(200).json({data})
+}
+
+function createOneTrans (req,res,next) {
+  const id = req.params.id
+  const body = req.body
+  const data = model.createOneTrans(id, body)
+  if (data.status) {
+    next({error: data})
+  }
+  res.status(201).json({data})
+}
+
+function updateOneTrans (req,res,next) {
+  const id = req.params.id
+  const idT = req.params.idT
+  const body = req.body
+  const data = model.updateOneTrans(id, idT, body)
+  if (data.status) {
+    next({error: data})
+  }
+  res.status(200).json({data})
+}
+
+function deleteOneTrans (req,res,next) {
+  const id = req.params.id
+  const idT = req.params.idT
+  const data = model.deleteOneTrans(id, idT)
+  if (data.status) {
     next({error: data})
   }
   res.status(200).json({data})
@@ -49,5 +98,10 @@ module.exports = {
   getOne,
   createOne,
   updateOne,
-  deleteOne
+  deleteOne,
+  getAllTrans,
+  getOneTrans,
+  createOneTrans,
+  updateOneTrans,
+  deleteOneTrans
 }
